@@ -25,7 +25,7 @@ export const itemModel = {
     },
     createItem: function (item) {
         return new Promise((res, rej) => {
-            db.run('INSERT INTO items(name, description) VALUES(?, ?)', [item.name, item.description], (err) => {
+            db.run('INSERT INTO items(name, description) VALUES(?, ?)', [item.name, item.description], function(err){
                 if (err) {
                     rej(err)
                 } else {
@@ -36,7 +36,7 @@ export const itemModel = {
     },
     updateItem: function (id, item) {
         return new Promise((res, rej) => {
-            db.run('UPDATE items SET name=?, description=? WHERE id=?', [item.name, item.description, item.id], (err) => {
+            db.run('UPDATE items SET name=?, description=? WHERE id=?', [item.name, item.description, id], (err) => {
                 if (err) {
                     rej(err)
                 } else {
